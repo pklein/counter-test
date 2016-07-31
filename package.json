@@ -26,6 +26,8 @@
     "gulp-sass": "^2.1.0",
     "jsdom": "^3.1.2",
     "lodash": "^3.0.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.1",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0",
     "vinyl-buffer": "~1.0.0",
