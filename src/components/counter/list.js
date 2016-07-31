@@ -20,23 +20,20 @@ class CounterList extends Component {
 
   render() {
     var counters = _.map(this.props.counters, function(counter) {
-      return
+      return (
         <Counter
           name={counter.name}
           value={counter.value}
-        />;
+          id={counter.id}
+          key={counter.id}
+        />
+      );
     });
     return (
       <div className="counter-list">
         <h2>Total: <span className="total">{this.props.total}</span></h2>
         <ul className="counters">
-          {this.props.counters.map(counter => 
-            <Counter
-              name={counter.name}
-              value={counter.value}
-              key={counter.key}
-            />
-          )}
+          {counters}
         </ul>
         <div className="add-counter">
           <span>New Counter</span>
@@ -68,6 +65,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(CounterList);

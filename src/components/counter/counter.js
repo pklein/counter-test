@@ -3,11 +3,16 @@
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 
-class Counter extends Component {
+import { increment, decrement } from '../../actions';
+
+export class Counter extends Component {
+
   render() {
     return (
       <li className="counter">
-        <span>{this.props.name}: {this.props.value}</span>
+        <span className="current">{this.props.name}: {this.props.value}</span>
+        <button type="button" onClick={this.props.increment.bind(this, this.props.id)}>+</button>
+        <button type="button" onClick={this.props.decrement.bind(this, this.props.id)}>-</button>
       </li>
     )
   }
@@ -15,7 +20,19 @@ class Counter extends Component {
 
 Counter.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired
 }
 
-export default Counter
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: (name) => {
+      dispatch(increment(name));
+    },
+    decrement: (name) => {
+      dispatch(decrement(name));
+    }
+  };
+}
+
+export default connect(null,mapDispatchToProps)(Counter);
