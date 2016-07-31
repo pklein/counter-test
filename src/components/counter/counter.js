@@ -10,9 +10,9 @@ export class Counter extends Component {
   render() {
     return (
       <li className="counter">
-        <span className="current">{this.props.name}: {this.props.value}</span>
-        <button type="button" onClick={this.props.increment.bind(this, this.props.id)}>+</button>
-        <button type="button" onClick={this.props.decrement.bind(this, this.props.id)}>-</button>
+        <span className="counter-label">{this.props.name}: {this.props.value}</span>
+        <button className="increment" type="button" onClick={this.props.increment.bind(this, this.props.id)}>+</button>
+        <button className="decrement" type="button" onClick={this.props.decrement.bind(this, this.props.id)}>-</button>
       </li>
     )
   }

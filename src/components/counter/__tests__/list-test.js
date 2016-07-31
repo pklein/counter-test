@@ -32,7 +32,7 @@ describe('CounterList', function() {
     var total = findByClass(component, 'total');
     expect(total.textContent).to.equal('4');
 
-    var counter = findByClass(component, 'current');
+    var counter = findByClass(component, 'counter-label');
     expect(counter.textContent).to.equal('test: 4');
   });
 
@@ -41,7 +41,7 @@ describe('CounterList', function() {
     var total = findByClass(component, 'total');
     expect(total.textContent).to.equal('4');
 
-    var counterLabels = scryByClass(component, 'current');
+    var counterLabels = scryByClass(component, 'counter-label');
     expect(counterLabels.length).to.equal(2);
     expect(counterLabels[0].textContent).to.equal('test-1: 1');
     expect(counterLabels[1].textContent).to.equal('test-2: 3');
@@ -79,7 +79,7 @@ describe('CounterList', function() {
     var button = findByTag(component, 'button');
     Simulate.click(button);
 
-    var counter = findByClass(component, 'current');
+    var counter = findByClass(component, 'counter-label');
     expect(counter.textContent).to.equal('abc: 0');
   });
 });
