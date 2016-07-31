@@ -46,4 +46,40 @@ describe('CounterList', function() {
     expect(counterLabels[0].textContent).to.equal('test-1: 1');
     expect(counterLabels[1].textContent).to.equal('test-2: 3');
   });
+
+  it('should disable create button when text box is empty', function() {
+    var component = createComponent();
+    var newCounterName = findByTag(component, 'input');
+
+    newCounterName.value = '';
+    Simulate.change(newCounterName);
+
+    var button = findByTag(component, 'button');
+    expect(button.disabled).to.equal(true);
+  });
+
+  it('should enable create button when text box is not empty', function() {
+    var component = createComponent();
+    var newCounterName = findByTag(component, 'input');
+
+    newCounterName.value = 'abc';
+    Simulate.change(newCounterName);
+
+    var button = findByTag(component, 'button');
+    expect(button.disabled).to.equal(false);
+  });
+
+  it('should add counter when add counter button is clicked', function() {
+    var component = createComponent();
+    var newCounterName = findByTag(component, 'input');
+
+    newCounterName.value = 'abc';
+    Simulate.change(newCounterName);
+
+    var button = findByTag(component, 'button');
+    Simulate.click(button);
+
+    var counter = findByClass(component, 'current');
+    expect(counter.textContent).to.equal('abc: 0');
+  });
 });

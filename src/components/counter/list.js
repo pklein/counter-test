@@ -9,13 +9,21 @@ import Counter from './counter';
 
 class CounterList extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { newCounterName: '' };
+  }
+
   createCounter(e) {
     e.preventDefault();
-    var nameInput = this.refs.name;
-    if (nameInput.value.length > 0) {
-      this.props.addCounter(nameInput.value);
-      nameInput.value = '';
+    if (this.state.newCounterName.length > 0) {
+      this.props.addCounter(this.state.newCounterName);
+      this.setState({ newCounterName: '' });
     }
+  }
+
+  onTextChange(e) {
+    this.setState({ newCounterName: e.target.value });
   }
 
   render() {
@@ -37,8 +45,8 @@ class CounterList extends Component {
         </ul>
         <div className="add-counter">
           <span>New Counter</span>
-          <input name="name" ref="name" placeholder="Counter Name" />
-          <button onClick={this.createCounter.bind(this)}>Do the stuff</button>
+          <input name="name" placeholder="Counter Name" value={this.newCounterName} onChange={this.onTextChange.bind(this)} />
+          <button disabled={!this.state.newCounterName} onClick={this.createCounter.bind(this)}>Do the stuff</button>
         </div>
       </div>
     )
