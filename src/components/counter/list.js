@@ -45,7 +45,7 @@ class CounterList extends Component {
         </ul>
         <div className="add-counter">
           <span>New Counter</span>
-          <input name="name" placeholder="Counter Name" value={this.newCounterName} onChange={this.onTextChange.bind(this)} />
+          <input name="name" placeholder="Counter Name" value={this.state.newCounterName} onChange={this.onTextChange.bind(this)} />
           <button disabled={!this.state.newCounterName} onClick={this.createCounter.bind(this)}>Add</button>
         </div>
       </div>
