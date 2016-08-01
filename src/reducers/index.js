@@ -18,8 +18,8 @@ function countersApp(state = { total: 0, counters: {} }, action) {
 }
 
 function addCounterToState(state, action) {
-  var newId = ++lastCounterId;
-  var newCounters = _.assign({}, state.counters);
+  const newId = ++lastCounterId;
+  const newCounters = _.assign({}, state.counters);
   newCounters[newId] = { id: newId, name: action.name, value: 0 };
   return {
     total: state.total,
@@ -36,8 +36,8 @@ function decrementCounter(state, action) {
 }
 
 function newStateWithCounterValue(state, id, value) {
-  var newCounters = _.assign({}, state.counters);
-  var counter = _.assign({}, state.counters[id], { value: value });
+  const newCounters = _.assign({}, state.counters);
+  const counter = _.assign({}, state.counters[id], { value: value });
   newCounters[id] = counter;
   return {
     total: calculateTotal(newCounters),
